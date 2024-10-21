@@ -28,7 +28,7 @@ export type State = {
 };
 
 // create
-export async function createInvoice(prevState: State, formData: FormData) {
+export async function createInvoice(state: State, formData: FormData) {
   const validatedFields = CreateInvoice.safeParse({
     customerId: formData.get("customerId"),
     amount: formData.get("amount"),
@@ -38,7 +38,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
     return {
-      ...prevState,
+      ...state,
       errors: validatedFields.error.flatten().fieldErrors,
       message: "创建失败！",
     };

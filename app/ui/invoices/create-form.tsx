@@ -13,10 +13,15 @@ import { useFormState } from "react-dom";
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState = { errors: {}, message: null };
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //  @ts-expect-error
   const [state, dispatch] = useFormState(createInvoice, initialState);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const result = dispatch(formData);
     return result;
   };
