@@ -17,7 +17,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const result = await dispatch(formData);
+    const result = dispatch(formData);
     return result;
   };
   return (
