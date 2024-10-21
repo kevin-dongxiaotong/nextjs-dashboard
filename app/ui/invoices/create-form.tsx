@@ -15,10 +15,10 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState = { errors: {}, message: null };
   const [state, dispatch] = useFormState(createInvoice, initialState);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // 防止默认提交行为
+    e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const result = await dispatch(formData); // 调用 dispatch 处理表单数据
-    // 根据 result 进行后续处理，例如更新状态或显示错误信息
+    const result = await dispatch(formData);
+    return result;
   };
   return (
     <form onSubmit={handleSubmit}>
