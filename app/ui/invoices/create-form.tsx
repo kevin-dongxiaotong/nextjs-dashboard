@@ -14,8 +14,14 @@ import { useFormState } from "react-dom";
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState = { errors: {}, message: null };
   const [state, dispatch] = useFormState(createInvoice, initialState);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // 防止默认提交行为
+    const formData = new FormData(e.currentTarget);
+    const result = await dispatch(formData); // 调用 dispatch 处理表单数据
+    // 根据 result 进行后续处理，例如更新状态或显示错误信息
+  };
   return (
-    <form action={dispatch}>
+    <form onSubmit={handleSubmit}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
