@@ -54,7 +54,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
   `;
   } catch (error) {
-    return { error: "Database error" };
+    return error;
   }
 
   revalidatePath("/dashboard/invoices");
